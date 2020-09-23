@@ -1,14 +1,14 @@
-chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.sync.set({color: '#3aa757'}, function() {
-      console.log('The color is green.');
-    });
-    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-      chrome.declarativeContent.onPageChanged.addRules([{
-        conditions: [new chrome.declarativeContent.PageStateMatcher({
-          pageUrl: {hostEquals: 'developer.chrome.com'},
-        })
-        ],
-            actions: [new chrome.declarativeContent.ShowPageAction()]
-      }]);
-    });
+chrome.extension.onRequest.addListener(
+  function(request, sender, sendResponse) {
+    // LOG THE CONTENTS HERE
+    console.log(request.content);
   });
+
+chrome.tabs.getSelected(null, function(tab) {
+
+  // Now inject a script onto the page
+  chrome.tabs.executeScript(tab.id, {
+       code: "chrome.extension.sendRequest({content: document.body.innerHTML}, function(response) { console.log('success'); });"
+     }, function() { console.log('done'); });
+
+});
