@@ -1,4 +1,4 @@
-chrome.extension.onRequest.addListener(
+chrome.runtime.onRequest.addListener(
   function(request, sender, sendResponse) {
     // LOG THE CONTENTS HERE
     console.log(request.content);
