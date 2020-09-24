@@ -1,1 +1,4 @@
-chrome.runtime.sendMessage(document.getElementsByClassName("record-item-text customer transcript").innerText);
+let audio= document.getElementsByClassName("customer-transcript");
+for(let i = 0; i < audio.length; i++) {
+    chrome.runtime.sendMessage(audio[i].innerText);
+}
