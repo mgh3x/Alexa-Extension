@@ -1,1 +1,1 @@
-chrome.runtime.sendMessage(document.getElementsByClassName("record-item-text customer transcript")[0].innerText);
+chrome.runtime.sendMessage(document.getElementsByClassName("record-item-text customer transcript"));
