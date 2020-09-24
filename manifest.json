@@ -18,7 +18,7 @@
         "128": "images/v_sabre.png"
     },
     "content_scripts": {
-        "matches": ["http://*/*", "https://*/*"],
+        "matches": ["<all_urls>"],
         "js": ["scrape.js"]
     },
     "manifest_version": 2
