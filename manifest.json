@@ -17,5 +17,9 @@
     "icons": {
         "128": "images/v_sabre.png"
     },
+    "content_scripts": {
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["scrape.js"]
+    },
     "manifest_version": 2
     }
