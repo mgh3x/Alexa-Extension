@@ -3,7 +3,7 @@
     "options_page": "options.html",
     "version": "1.0",
     "description": "Scrape Amazon Alexa voice history and give the option of downloading it or deleting it.",
-    "permissions": ["activeTab", "tabs"],
+    "permissions": ["activeTab", "tabs", "declarativeContent"],
     "background": {
         "scripts": ["background.js"],
         "persistent": false
@@ -19,7 +19,7 @@
     },
     "content_scripts": [
         {
-        "matches": ["http://*/*", "https://*/*"],
+        "matches": ["<all_urls>"],
         "js": ["scrape.js"]
         }
     ],
