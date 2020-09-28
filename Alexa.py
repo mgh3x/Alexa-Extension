@@ -1,6 +1,6 @@
 class Credentials:
-    email = 'glennrh97@yahoo.com'
-    password = '44Jack!@Son**'
+    email = '****'
+    password = '****'
 
 def amazon_login(driver, date_from, date_to):
     driver.implicitly_wait(5)
