@@ -8,12 +8,18 @@
         "scripts": ["background.js"],
         "persistent": false
     },
-    "browser_action": {
+    "page_action": {
         "default_popup": "popup.html",
         "default_icon": {
         "128": "images/v_sabre.png"
         }
     },
+    "content_scripts": [
+        {
+            "matches": ["https://alexa.amazon.com/*"],
+            "js": ["scrape.js"]
+        }
+    ],
     "icons": {
         "128": "images/v_sabre.png"
     },

@@ -21,16 +21,23 @@ function printThing() {
 }*/
 
 // Following code meant for https://alexa.amazon.com/spa/index.html#cards
-async function getAlexaDom() {
-    let response = await fetch("https://alexa.amazon.com/spa/index.html#cards");
 
-    if (response.ok) { // if HTTP-status is 200-299
-    // get the response body (the method explained below)
-    let json = await response.text();
-    console.log(json);
-    } 
-    else
-        alert("HTTP-Error: " + response.status);
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        switch(request.type) {
+            case "runScrape":
+                clickOnMore();
+                break;
+            default:
+                console.error("Unrecognised message: ", request);
+        }
+    }
+);
+
+function clickOnMore() {
+    let moreButtons = document.getElementsByClassName("d-card-menu");
+    //console.log(moreButtons.length);
+    for(let i = 0; i < moreButtons.length; i++)
+        moreButtons[i].click();
+    console.log("Done clicking!");
 }
-
-getAlexaDom();
