@@ -36,11 +36,30 @@ chrome.runtime.onMessage.addListener(
 );
 
 function expandDetails() {
-    let moreButtons = document.getElementsByClassName("d-card-menu");
-    //console.log(moreButtons.length);
-    for(let i = 0; i < moreButtons.length; i++)
-        moreButtons[i].click();
-    console.log("Done clicking!");
+    let loadAllCards = document.getElementById("d-cardstream-get-more");
+    if(document.body.contains(loadAllCards)) {
+        loadAllCards.click();
+        setTimeout(expandDetails(), 5000);
+    }
+    else {
+    /*let loadAllCards = document.getElementById("d-cardstream-get-more");
+    console.log("Hello there");
+    while(document.body.contains(loadAllCards)) {
+        console.log("loop!");
+        loadAllCards.click();
+        setTimeout(function again() {
+            console.log("Another round!");
+            loadAllCards = document.getElementById("d-cardstream-get-more");
+        }, 5000);
+    }*/
+        let moreButtons = document.getElementsByClassName("d-card-menu");
+        //console.log(moreButtons.length);
+        for(let i = 0; i < moreButtons.length; i++) {
+            if(moreButtons[i].textContent.includes("More"))
+                moreButtons[i].click();
+        }
+        console.log("Done clicking!");
+    }
 };
 
 // Currently causes infinite loop. Will look into more later if necessary
