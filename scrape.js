@@ -61,14 +61,3 @@ function expandDetails() {
         console.log("Done clicking!");
     }
 };
-
-// Currently causes infinite loop. Will look into more later if necessary
-/*function clickOnMore() {
-    let bottomMoreButton = document.getElementById("d-cardstream-get-more");
-    while(bottomMoreButton != null) {
-        bottomMoreButton.click();
-        bottomMoreButton = document.getElementById("d-cardstream-get-more");
-        console.log("Clicked more");
-    }
-    console.log("No more 'mores' to click");
-};*/
