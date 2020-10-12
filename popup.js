@@ -16,6 +16,17 @@ scrapeButton.onclick = function() {
       }
       else {
         chrome.tabs.create({ url: 'https://alexa.amazon.com' });
+        function sleep(milliseconds) {
+          const date = Date.now();
+          let currentDate = null;
+          do {
+            currentDate = Date.now();
+          } while (currentDate - date < milliseconds);
+        }
+        sleep(5000);
+        console.log("Hello");
+        chrome.tabs.sendMessage(tabs[0].id, {type: "runScrape"});
+        
       }
     });
     //console.log(url)
