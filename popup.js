@@ -11,7 +11,8 @@ let scrapeButton = document.getElementById('scrapeData');
 
 scrapeButton.onclick = function() {
   let url =chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    if (tabs[0].url == 'https://alexa.amazon.com/spa/index.html#cards') {
+    if (tabs[0].url === 'https://alexa.amazon.com/spa/index.html#cards') {
+      console.log("Query: " + tabs[0].id);
       chrome.tabs.sendMessage(tabs[0].id, {type: "runScrape"});
     }
     else {
@@ -19,7 +20,7 @@ scrapeButton.onclick = function() {
       function(response) {
         console.log(response);
         if (response.url === 'https://alexa.amazon.com/spa/index.html#cards') {
-          console.log("hi there");
+          console.log("Hello there!");
           chrome.tabs.sendMessage(response.newTabId, {type: "runScrape"});
         }
       });

@@ -22,11 +22,16 @@ function printThing() {
 
 // Following code meant for https://alexa.amazon.com/spa/index.html#cards
 
+const bg_console = {
+    log: (info) => chrome.extension.getBackgroundPage().console.log(info),
+  };
+
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
+        bg_console.log("Heard!");
         switch(request.type) {
             case "runScrape":
-                //clickOnMore();
+                bg_console.log("Got here!");
                 expandDetails();
                 break;
             default:
