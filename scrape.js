@@ -27,6 +27,7 @@ chrome.runtime.onMessage.addListener(
         switch(request.type) {
             case "runScrape":
                 //clickOnMore();
+                console.log("doing something")
                 expandDetails();
                 break;
             default:
@@ -35,7 +36,28 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+async function f() {
+
+    let promise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("done!"), 2000)
+    });
+  
+    let result = await promise; // wait until the promise resolves (*)
+  
+    alert(result); // "done!"
+  }
+
 function expandDetails() {
+    //f()
+    alert("does this work")
+    /*function sleep(milliseconds) {
+          const date = Date.now();
+          let currentDate = null;
+          do {
+            currentDate = Date.now();
+          } while (currentDate - date < milliseconds);
+        }
+    sleep(5000); */
     let moreButtons = document.getElementsByClassName("d-card-menu");
     //console.log(moreButtons.length);
     for(let i = 0; i < moreButtons.length; i++)
