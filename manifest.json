@@ -17,7 +17,8 @@
     "content_scripts": [
         {
             "matches": ["https://alexa.amazon.com/*"],
-            "js": ["scrape.js"]
+            "js": ["scrape.js"],
+            "run_at": "document_end"
         }
     ],
     "icons": {

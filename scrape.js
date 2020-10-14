@@ -22,16 +22,12 @@ function printThing() {
 
 // Following code meant for https://alexa.amazon.com/spa/index.html#cards
 
-const bg_console = {
-    log: (info) => chrome.extension.getBackgroundPage().console.log(info),
-  };
-
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        bg_console.log("Heard!");
+        debugger;
         switch(request.type) {
             case "runScrape":
-                bg_console.log("Got here!");
+                console.log("Got here!");
                 expandDetails();
                 break;
             default:
@@ -47,6 +43,7 @@ function expandDetails() {
         setTimeout(expandDetails(), 5000);
     }*/
     //else {
+    //alert("hello there!");
     let moreButtons = document.getElementsByClassName("d-card-menu");
     for(let i = 0; i < moreButtons.length; i++) {
         if(moreButtons[i].textContent.includes("More"))
