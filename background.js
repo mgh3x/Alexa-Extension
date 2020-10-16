@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(
               setTimeout(function() {
                 chrome.tabs.sendMessage(tabId, {type: "runScrape"});
                 chrome.tabs.onUpdated.removeListener(listener);
-                chrome.tabs.remove(myTab.id);
+                //chrome.tabs.remove(myTab.id);
               }, 5000);
             }
         };
