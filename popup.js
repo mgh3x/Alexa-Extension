@@ -10,17 +10,13 @@ const console = {
 let scrapeButton = document.getElementById('scrapeData');
 
 scrapeButton.onclick = function() {
-    let url =chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      if (tabs[0].url == 'https://alexa.amazon.com/spa/index.html#cards') {
-        chrome.tabs.sendMessage(tabs[0].id, {type: "runScrape"})
-      }
-      else {
-        chrome.tabs.create({ url: 'https://alexa.amazon.com' });
-      }
-    });
-    //console.log(url)
-    //chrome.tabs.create({ url: 'https://alexa.amazon.com' });
-    //chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    //    chrome.tabs.sendMessage(tabs[0].id, {type: "runScrape"})
-    //});
+  let url =chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    if (tabs[0].url === 'https://alexa.amazon.com/spa/index.html#cards') {
+      console.log("Query: " + tabs[0].id);
+      chrome.tabs.sendMessage(tabs[0].id, {type: "runScrape"});
+    }
+    else {
+      chrome.runtime.sendMessage({source: "https://alexa.amazon.com/spa/index.html#cards", type: "createTab"}); 
+    }
+  });
 };
