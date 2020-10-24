@@ -7,6 +7,7 @@ chrome.runtime.onMessage.addListener(
             // make sure the status is 'complete' and it's the right tab
             if (tabId === myTab.id && changeInfo.status == 'complete') {
               setTimeout(function() {
+                console.log("hello world");
                 chrome.tabs.sendMessage(tabId, {type: "runScrape"});
                 chrome.tabs.onUpdated.removeListener(listener);
                 //chrome.tabs.remove(myTab.id);

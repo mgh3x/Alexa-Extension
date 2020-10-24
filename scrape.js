@@ -24,9 +24,9 @@ function printThing() {
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        debugger;
         switch(request.type) {
             case "runScrape":
+                breakpoint;
                 console.log("Got here!");
                 expandDetails();
                 break;
